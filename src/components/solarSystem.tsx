@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 
-import { useReadData } from '../utils/readData.ts'
-import { sphereObjectParams, createDefaultSphereObjectParams } from '../types/types.ts'
+import { rawData, sphereObjectParams, createDefaultSphereObjectParams } from '../types/types.ts'
 import { Planets } from './planets.tsx'
 import { Sun } from './sun.tsx'
 import { normalizeBySun } from '../utils/utilFunctions.ts'
+import sunJson from "../data/sun.json"
+import planetsJson from "../data/data.json"
 
 export function SolarSystem()
 {
@@ -15,14 +16,14 @@ export function SolarSystem()
 
    async function fetchSunData()
    {
-      const data = await useReadData("src/data/sun.json");
-      setSunParams(data[0]);
+      const data: rawData = sunJson;
+      setSunParams(data.sun);
    };
 
    async function fetchPlanetData()
    {
-      const data = await useReadData("src/data/data.json");
-      setPlanetParams(data);
+      const data: rawData = planetsJson;
+      setPlanetParams(Object.values(data));
    };
 
    useEffect(() =>

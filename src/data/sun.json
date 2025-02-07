@@ -1,9 +1,9 @@
 {
    "sun": {
       "name": "sun",
+      "mass10_24Kg": 1.9891e6, 
       "volumetricMeanRadiusKm": 695700,
-      "distance10_6km": 0,
-      "siderealRotationPeriodHrs": 609.12,
+      "semimajorAxis10_6Km": 0,
       "texture": "./assets/2k_sun.jpg"
    }
 }

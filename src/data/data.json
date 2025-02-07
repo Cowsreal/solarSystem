@@ -1,5 +1,6 @@
 {
     "mars": {
+         "name": "mars",
         "mass10_24Kg": 0.64171,
         "volume10_10Km3": 16.318,
         "equatorialRadiusKm": 3396.2,
@@ -40,6 +41,7 @@
         "texture": "/assets/2k_mars.jpg"
     },
     "earth": {
+         "name": "earth",
         "mass10_24Kg": 5.9724,
         "volume10_10Km3": 108.321,
         "equatorialRadiusKm": 6378.1,
@@ -80,6 +82,7 @@
         "texture": "/assets/2k_earth.jpg"
     },
     "venus": {
+         "name": "venus",
         "mass10_24Kg": 4.8675,
         "volume10_10Km3": 92.843,
         "equatorialRadiusKm": 6051.8,
@@ -119,6 +122,7 @@
         "texture": "/assets/2k_venus.jpg"
     },
     "mercury": {
+         "name": "mercury",
         "mass10_24Kg": 0.33011,
         "volume10_10Km3": 6.083,
         "equatorialRadiusKm": 2439.7,
@@ -158,6 +162,7 @@
         "texture": "/assets/2k_mercury.jpg"
     },
     "pluto": {
+         "name": "pluto",
         "mass10_24Kg": 0.01303,
         "volume10_10Km3": 0.697,
         "equatorialRadiusKm": 1187,
@@ -178,7 +183,7 @@
         "planetaryRingSystem": false,
         "semimajorAxis10_6Km": 5906.38,
         "siderealOrbitPeriodDays": 90560,
-        "tropicalOrbitPeriodDays": "Unknown",
+        "tropicalOrbitPeriodDays": 0,
         "perihelion10_6Km": 4436.82,
         "aphelion10_6Km": 7375.93,
         "synodicPeriodDays": 366.73,
@@ -194,6 +199,7 @@
         "texture": "/assets/2k_pluto.jpg"
     },
     "jupiter": {
+         "name": "jupiter",
         "mass10_24Kg": 1898.19,
         "volume10_10Km3": 143128,
         "equatorialRadius1BarLevelKm": 71492,
@@ -232,6 +238,7 @@
         "texture": "/assets/2k_jupiter.jpg"
     },
     "saturn": {
+         "name": "saturn",
         "mass10_24Kg": 568.34,
         "volume10_10Km3": 82713,
         "equatorialRadius1BarLevelKm": 60268,
@@ -269,6 +276,7 @@
         "texture": "/assets/2k_saturn.jpg"
     },
     "uranus": {
+         "name": "uranus",
         "mass10_24Kg": 86.813,
         "volume10_10Km3": 6833,
         "equatorialRadius1BarLevelKm": 25559,
@@ -307,6 +315,7 @@
         "texture": "/assets/2k_uranus.jpg"
     },
     "neptune": {
+         "name": "neptune",
         "mass10_24Kg": 102.413,
         "volume10_10Km3": 6254,
         "equatorialRadius1BarLevelKm": 24764,
