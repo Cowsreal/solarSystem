@@ -1,14 +1,14 @@
 {
    "compilerOptions": 
    {
-      "resolveJsonModule": true,
-      "esModuleInterop": true,
       "noUnusedLocals": false,
-      "noUnusedParameters": false
+      "noUnusedParameters": false,
+      "moduleResolution": "node",
    },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+   // "include": ["./declaration.d.ts"]
 }

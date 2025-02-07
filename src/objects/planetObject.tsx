@@ -53,7 +53,7 @@ export function PlanetObject({ planetParams, sunParams, orbitPoints }: { planetP
       let z = r * Math.sin(theta);
       let y = z * Math.sin(i);
       // y = y * Math.cos(i);
-      planetRef?.current.position.set(x, y, z);
+      planetRef.current.position.set(x, y, z);
    });
 
 
