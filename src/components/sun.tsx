@@ -1,11 +1,14 @@
-import { rawData, sphereObjectParams } from '../types/types.ts'
+import * as THREE from 'three'
+import { useLoader } from '@react-three/fiber'
+import { sphereObjectParams } from '../types/types.ts'
 
 export function Sun({ sunParams }: { sunParams: sphereObjectParams }) 
 {
+   const texture = useLoader(THREE.TextureLoader, sunParams.texture);
    return (
       <mesh key = { "sun" } position = {[0, 0, 0]}>
          <sphereGeometry args = {[sunParams.volumetricMeanRadiusKm, 64, 64]} />
-         <meshBasicMaterial color = "red" />
+         <meshStandardMaterial map = {texture} />
       </mesh>
    ); 
 }

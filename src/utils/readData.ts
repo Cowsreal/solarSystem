@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react'
-import { rawData, sphereObjectParams } from '../types/types.ts'
-
 export async function useReadData(path: string)
 {
    const response = await fetch(path);

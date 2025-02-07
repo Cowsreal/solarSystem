@@ -2,10 +2,10 @@
 import { SolarSystem } from './components/solarSystem.tsx'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import { AmbientLight } from 'three'
 
 function App() 
 {
+
 
    return ( 
    <>

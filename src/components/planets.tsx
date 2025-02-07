@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useEffect, useState } from 'react'
 import { Line } from '@react-three/drei'
 import * as THREE from 'three'
 
@@ -9,7 +8,10 @@ import { generateOrbitPath } from '../utils/utilFunctions.ts'
 
 export function Planets({ planetParams, sunParams }: {planetParams: sphereObjectParams[], sunParams: sphereObjectParams}) 
 {
-   const [orbitPoints, setOrbitPoints] = useState<THREE.Vector3[][]>([]);
+   const [orbitPoints, setOrbitPoints] = useState<THREE.Vector3[][]>(
+      new Array(planetParams.length).fill([0, 0, 0])
+   );
+
    useEffect(() =>
    {
       const myOrbitPoints = planetParams.map((planet) =>
@@ -17,11 +19,10 @@ export function Planets({ planetParams, sunParams }: {planetParams: sphereObject
          return generateOrbitPath(planet);
       });
       setOrbitPoints(myOrbitPoints);
-      console.log(orbitPoints)
    }, [planetParams]);
 
    if(orbitPoints.length === 0)
-   return null;
+   return null; 
 
    return (
       <>
@@ -30,7 +31,7 @@ export function Planets({ planetParams, sunParams }: {planetParams: sphereObject
          {
             return ( 
                <>
-               <PlanetObject planetParams = { planet } sunParams = { sunParams } orbitPoints = { orbitPoints[index] }/>
+               <PlanetObject key = {planet.name} planetParams = { planet } sunParams = { sunParams } orbitPoints = { orbitPoints[index] }/>
                <Line 
                   points = {orbitPoints[index]}
                   color = {"white"}

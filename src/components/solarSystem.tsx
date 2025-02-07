@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react"
 
 import { useReadData } from '../utils/readData.ts'
-import { sphereObjectParams } from '../types/types.ts'
+import { sphereObjectParams, createDefaultSphereObjectParams } from '../types/types.ts'
 import { Planets } from './planets.tsx'
 import { Sun } from './sun.tsx'
 import { normalizeBySun } from '../utils/utilFunctions.ts'
 
 export function SolarSystem()
 {
-   const [sunParams, setSunParams] = useState<sphereObjectParams | null>(null);
-   const [planetParams, setPlanetParams] = useState<sphereObjectParams[] | null>(null);
+   const [sunParams, setSunParams] = useState<sphereObjectParams>(createDefaultSphereObjectParams()[0]);
+   const [planetParams, setPlanetParams] = useState<sphereObjectParams[]>(createDefaultSphereObjectParams());
    const [initialized, setInitialized] = useState(false);
+   const [dataFetched, setDataFetched] = useState(false);
 
    async function fetchSunData()
    {
@@ -28,27 +29,34 @@ export function SolarSystem()
    {
       fetchSunData();
       fetchPlanetData();
+      setDataFetched(true);
    }, []);
 
    useEffect(() =>
    {
-      if(!initialized && sunParams !== null && planetParams !== null)
+      if(dataFetched && !initialized && sunParams !== null && planetParams !== null)
       {
          setPlanetParams(prev => prev ? normalizeBySun(sunParams.volumetricMeanRadiusKm, prev): prev);
          setSunParams(prev => prev ? {
+            ...prev,
             volumetricMeanRadiusKm: prev.volumetricMeanRadiusKm / prev.volumetricMeanRadiusKm
-         } : null);
+         } : prev);
 
          setInitialized(true);
       }
    }, [sunParams, planetParams])
 
    if(!initialized)
-   return <></>;
+   {
+      return <></>;
+   }
+   else
+   {
+      return ( 
+      <>
+         <Sun sunParams = { sunParams }/>
+         <Planets planetParams = { planetParams } sunParams = { sunParams }/>
+      </>);
+   }
 
-   return ( 
-   <>
-      <Sun sunParams = { sunParams }/>
-      <Planets planetParams = { planetParams } sunParams = { sunParams }/>
-   </>);
 }

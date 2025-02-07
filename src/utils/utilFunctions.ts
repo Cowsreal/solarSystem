@@ -7,7 +7,6 @@ export function normalizeBySun(value: number, object: sphereObjectParams[])
    ({
       ...currObj,
       volumetricMeanRadiusKm: (currObj.volumetricMeanRadiusKm / value) * 80,
-      perihelion10_6Km: ((currObj.perihelion10_6Km / value) * 1e6) / 80 + 2,
       semimajorAxis10_6Km: ((currObj.semimajorAxis10_6Km / value) * 1e6) / 20,
    }));
 }
@@ -25,7 +24,7 @@ export function generateOrbitPath(params: sphereObjectParams): THREE.Vector3[]
       let x = r * Math.cos(theta);
       let z = r * Math.sin(theta);
       let y = z * Math.sin(i);
-      y = y * Math.cos(i);
+      // y = y * Math.cos(i);
       points.push(new THREE.Vector3(x, y, z));
    }
    points.push(points[0]);
