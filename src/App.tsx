@@ -14,9 +14,9 @@ function App()
          fov: 45,
          near: 0.1,
          far: 100000,
-         position: [0, 0, 50]
+         position: [0, 50, 100]
       }}>
-         <ambientLight intensity = {1} />
+         <ambientLight intensity = {3} />
          <OrbitControls target = {[0, 0, 0]}/>
          <SolarSystem />
       </Canvas>

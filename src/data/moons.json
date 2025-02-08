@@ -1,0 +1,140 @@
+{
+   "mercury": [
+
+   ],
+   "venus": [
+
+   ],
+    "earth": [
+      {
+      "name": "moon",
+      "volumetricMeanRadiusKm": 1737.5,
+      "semimajorAxis10_6Km": 0.384,
+      "siderealOrbitPeriodDays": 27.3,
+      "orbitInclinationDeg": 5.1,
+      "orbitEccentricity": 0.055,
+      "siderealRotationPeriodHrs": 655.7,
+      "obliquityToOrbitDeg": 6.68,
+      "texture": "/assets/2k_mars.jpg"
+      }
+   ],
+    "mars": [
+      {
+      "name": "phobos",
+      "volumetricMeanRadiusKm": 11.2667,
+      "semimajorAxis10_6Km": 0.00935,
+      "siderealOrbitPeriodDays": 0.3189,
+      "orbitInclinationDeg": 1.1,
+      "orbitEccentricity": 0.0151,
+      "siderealRotationPeriodHrs": 7.65,
+      "obliquityToOrbitDeg": 1.0799,
+      "texture": "/assets/2k_mars.jpg"
+      },{
+      "name": "deimos",
+      "volumetricMeanRadiusKm": 6.57,
+      "semimajorAxis10_6Km": 0.02345,
+      "siderealOrbitPeriodDays": 1.263,
+      "orbitInclinationDeg": 27.409,
+      "orbitEccentricity": 0.00033,
+      "siderealRotationPeriodHrs": 29.74,
+      "obliquityToOrbitDeg": 1.785,
+      "texture": "/assets/2k_mars.jpg"
+      }],
+   "jupiter": [
+      {
+      "name": "io", 
+      "volumetricMeanRadiusKm": 1821.5,
+      "semimajorAxis10_6Km": 0.4218,
+      "siderealOrbitPeriodDays": 1.7691,
+      "orbitInclinationDeg": 0.04,
+      "orbitEccentricity": 0.004,
+      "siderealRotationPeriodHrs": 42.5,
+      "obliquityToOrbitDeg": 0.0199,
+      "texture": "/assets/2k_mars.jpg"
+      },{
+      "name": "europa", 
+      "volumetricMeanRadiusKm": 1560.8,
+      "semimajorAxis10_6Km": 0.6711,
+      "siderealOrbitPeriodDays": 3.5511,
+      "orbitInclinationDeg": 0.47,
+      "orbitEccentricity": 0.009,
+      "siderealRotationPeriodHrs": 85.2,
+      "obliquityToOrbitDeg": 0.0199,
+      "texture": "/assets/2k_mars.jpg"
+      },{
+      "name": "ganymede", 
+      "volumetricMeanRadiusKm": 2631.2,
+      "semimajorAxis10_6Km": 1.0704,
+      "siderealOrbitPeriodDays": 7.1546,
+      "orbitInclinationDeg": 0.18,
+      "orbitEccentricity": 0.001,
+      "siderealRotationPeriodHrs": 171.7,
+      "obliquityToOrbitDeg": 0.0199,
+      "texture": "/assets/2k_mars.jpg"
+      },{
+      "name": "callisto", 
+      "volumetricMeanRadiusKm": 2410.3,
+      "semimajorAxis10_6Km": 1.8827,
+      "siderealOrbitPeriodDays": 16.6890,
+      "orbitInclinationDeg": 0.19,
+      "orbitEccentricity": 0.007,
+      "siderealRotationPeriodHrs": 400.5,
+      "obliquityToOrbitDeg": 0.0199,
+      "texture": "/assets/2k_mars.jpg"
+      }
+   ],
+   "saturn": [
+      {
+      "name": "mimas", 
+      "volumetricMeanRadiusKm": 208,
+      "semimajorAxis10_6Km": 0.1855,
+      "siderealOrbitPeriodDays": 0.9424,
+      "orbitInclinationDeg": 1.53,
+      "orbitEccentricity": 0.0202,
+      "siderealRotationPeriodHrs": 22.6176,
+      "obliquityToOrbitDeg": 0.1129,
+      "texture": "/assets/2k_mars.jpg"
+      },{
+      "name": "enceladus", 
+      "volumetricMeanRadiusKm": 257,
+      "semimajorAxis10_6Km": 0.2380,
+      "siderealOrbitPeriodDays": 1.3702,
+      "orbitInclinationDeg": 0.00,
+      "orbitEccentricity": 0.0045,
+      "siderealRotationPeriodHrs": 32.8848,
+      "obliquityToOrbitDeg": 0.0121,
+      "texture": "/assets/2k_mars.jpg"
+      },{
+      "name": "tethys", 
+      "volumetricMeanRadiusKm": 538,
+      "semimajorAxis10_6Km": 0.2947,
+      "siderealOrbitPeriodDays": 1.8878,
+      "orbitInclinationDeg": 1.86,
+      "orbitEccentricity": 0.000,
+      "siderealRotationPeriodHrs": 45.3072,
+      "obliquityToOrbitDeg": 0.3499,
+      "texture": "/assets/2k_mars.jpg"
+      },{
+      "name": "dione", 
+      "volumetricMeanRadiusKm": 563,
+      "semimajorAxis10_6Km": 0.3774,
+      "siderealOrbitPeriodDays": 2.7369,
+      "orbitInclinationDeg": 0.02,
+      "orbitEccentricity": 0.0022,
+      "siderealRotationPeriodHrs": 65.686,
+      "obliquityToOrbitDeg": 1.0129,
+      "texture": "/assets/2k_mars.jpg"
+      },{
+      "name": "rhea", 
+      "volumetricMeanRadiusKm": 765,
+      "semimajorAxis10_6Km": 0.5270,
+      "siderealOrbitPeriodDays": 4.5175,
+      "orbitInclinationDeg": 0.35,
+      "orbitEccentricity": 0.001,
+      "siderealRotationPeriodHrs": 108.42,
+      "obliquityToOrbitDeg": 0.0992,
+      "texture": "/assets/2k_mars.jpg"
+      }
+
+   ]
+}

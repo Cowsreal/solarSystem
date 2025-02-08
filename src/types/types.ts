@@ -1,7 +1,7 @@
 export type sphereObjectParams = 
 {
    name: string;
-   mass10_24Kg: number;
+   mass10_24Kg?: number;
    volume10_10Km3?: number;
    equatorialRadiusKm?: number;
    polarRadiusKm?: number;
@@ -84,7 +84,12 @@ export function createDefaultSphereObjectParams(): sphereObjectParams[]
       inclinationOfEquatorDeg: 0,
       texture: "NULL"
    }));
-}
+};
+
+export type moons = 
+{
+   [planet: string]: sphereObjectParams[];
+};
 
 export type rawData = 
 {

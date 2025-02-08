@@ -5,7 +5,7 @@ import { Planets } from './planets.tsx'
 import { Sun } from './sun.tsx'
 import { normalizeBySun } from '../utils/utilFunctions.ts'
 import sunJson from "../data/sun.json"
-import planetsJson from "../data/data.json"
+import planetsJson from "../data/planets.json"
 
 export function SolarSystem()
 {
@@ -14,22 +14,13 @@ export function SolarSystem()
    const [initialized, setInitialized] = useState(false);
    const [dataFetched, setDataFetched] = useState(false);
 
-   async function fetchSunData()
-   {
-      const data: rawData = sunJson;
-      setSunParams(data.sun);
-   };
-
-   async function fetchPlanetData()
-   {
-      const data: rawData = planetsJson;
-      setPlanetParams(Object.values(data));
-   };
-
    useEffect(() =>
    {
-      fetchSunData();
-      fetchPlanetData();
+      let data: rawData = sunJson;
+      setSunParams(data.sun);
+      data = planetsJson;
+      setPlanetParams(Object.values(data));
+
       setDataFetched(true);
    }, []);
 
@@ -38,11 +29,6 @@ export function SolarSystem()
       if(dataFetched && !initialized && sunParams !== null && planetParams !== null)
       {
          setPlanetParams(prev => prev ? normalizeBySun(sunParams.volumetricMeanRadiusKm, prev): prev);
-         setSunParams(prev => prev ? {
-            ...prev,
-            volumetricMeanRadiusKm: prev.volumetricMeanRadiusKm / prev.volumetricMeanRadiusKm
-         } : prev);
-
          setInitialized(true);
       }
    }, [sunParams, planetParams])

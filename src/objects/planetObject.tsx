@@ -1,11 +1,12 @@
-import { useRef } from 'react' 
-import { useFrame } from '@react-three/fiber'
+import { useRef, useState } from 'react' 
+import { useFrame, useLoader } from '@react-three/fiber'
+import { Line } from '@react-three/drei'
 import * as THREE from 'three'
-import { useLoader } from '@react-three/fiber'
 
 import { sphereObjectParams } from '../types/types.ts'
+import { Moons } from '../components/moons.tsx'
 
-export function PlanetObject({ planetParams, sunParams, orbitPoints }: { planetParams: sphereObjectParams, sunParams: sphereObjectParams, orbitPoints: THREE.Vector3[] })
+export function PlanetObject({ planetParams, sunParams, moonParams }: { planetParams: sphereObjectParams, sunParams: sphereObjectParams, moonParams: sphereObjectParams[] })
 {
    const texture = useLoader(THREE.TextureLoader, planetParams.texture);
 
@@ -14,7 +15,22 @@ export function PlanetObject({ planetParams, sunParams, orbitPoints }: { planetP
    const i = THREE.MathUtils.degToRad(planetParams.orbitInclinationDeg || 0);
 
    const planetRef = useRef<THREE.Mesh>(null);
-   const currAngle = useRef(0);
+   const groupRef = useRef<THREE.Group>(null);
+   const positionRef = useRef<THREE.Vector3>(new THREE.Vector3(0, 0, 0));
+   const currAngle = useRef(Math.random() * Math.PI * 2);
+
+   // Line from Sun to Planet
+   const [linePoints, setLinePoints] = useState<THREE.Vector3[]>([
+      new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(0, 0, 0),
+   ]);
+
+   const linePointsRef = useRef(linePoints)
+
+   // Axial Tilt
+   const axialTilt = THREE.MathUtils.degToRad(planetParams.obliquityToOrbitDeg || 0);
+
+   const rotationSpeed = (2 * Math.PI) / (planetParams.siderealRotationPeriodHrs * 3600);
 
    // Gravitational Constant
    const G = 6.67430e-11 / (4 / 3 * Math.PI * sunParams?.volumetricMeanRadiusKm ** 3);
@@ -32,7 +48,9 @@ export function PlanetObject({ planetParams, sunParams, orbitPoints }: { planetP
 
    useFrame((state, delta) =>
    {
-      currAngle.current += angularSpeed * delta * 10;
+      // Elliptical Orbit
+         
+      currAngle.current += angularSpeed * delta;
       
       // Anomaly
       let E = currAngle.current;
@@ -49,23 +67,41 @@ export function PlanetObject({ planetParams, sunParams, orbitPoints }: { planetP
 
       const r = (a * (1 - e ** 2)) / (1 + e * Math.cos(theta));
 
-      let x = r * Math.cos(theta);
-      let z = r * Math.sin(theta);
-      let y = z * Math.sin(i);
+      const x = r * Math.cos(theta);
+      const z = r * Math.sin(theta);
+      const y = z * Math.sin(i);
       // y = y * Math.cos(i);
-      planetRef.current.position.set(x, y, z);
+      groupRef.current.position.set(x, y, z);
+      const newLinePoints = [...linePointsRef.current];
+      newLinePoints[1].x = x;
+      newLinePoints[1].y = y;
+      newLinePoints[1].z = z;
+      setLinePoints(newLinePoints);
+      linePointsRef.current = newLinePoints;
+
+      // Rotation
+      planetRef.current.rotateY(rotationSpeed * delta * 7e4);
+      // groupRef.current.position.copy(planetRef.current.position);
+
    });
 
-
-   if(!orbitPoints)
-{
-      return <></>
-   }
-
    return (
-      <mesh key = {planetParams.name} ref = {planetRef} position = {orbitPoints[0]}>
-         <sphereGeometry args = {[planetParams.volumetricMeanRadiusKm, 64, 64]} />
-         <meshStandardMaterial map = {texture} />
-      </mesh>
+   <>
+      <group ref = {groupRef} position = {[0, 0, 0]}>
+         <group rotation = {[0, 0, axialTilt]}>
+            <mesh key = {planetParams.name} ref = {planetRef}>
+               <sphereGeometry args = {[planetParams.volumetricMeanRadiusKm, 64, 64]} />
+                  {/* 轮廓  */}
+               <meshStandardMaterial map = {texture} wireframe />
+            </mesh>
+            <Moons moonParams = {moonParams} sunParams = { sunParams } planetRadius = { planetParams.volumetricMeanRadiusKm } />
+         </group>
+      </group>
+      <Line 
+            points = {linePoints}
+            color = {"yellow"}
+            lineWidth = {1}
+      />
+   </>
    );
 }
